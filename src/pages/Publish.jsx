@@ -30,6 +30,7 @@ function Publish() {
                     navigate('/home');
                 }, 3000);
             }
+            console.log(res)
         } catch (error) {
             console.error(error.response.data.message)
         }
@@ -42,8 +43,8 @@ function Publish() {
                     <h1 className="text-white text-2xl font-bold text-center mb-6">Publish a eBook</h1>
                     <form className="flex flex-col space-y-5" encType="multipart/form-data" onSubmit={handleSubmit(onSubmit)}>
                         <InputCustom label="Title" name="title" register={register} />
-                        <InputCustom label="Synopsis" name="synopsis" register={register} />
                         <InputCustom label="Category" name="category" register={register} />
+                        <InputCustom label="Synopsis" name="synopsis" register={register} type="textarea" />
                         <InputCustom label="File (pdf)" name="file" register={register} type="file" />
                         <InputCustom label="Image" name="image" register={register} type="file" />
                         <button
