@@ -44,7 +44,7 @@ function Header() {
                 {/* Menú de navegación */}
                 <div
                     className={`${isMenuOpen ? "block" : "hidden"
-                        } md:flex md:items-center md:space-x-6 absolute md:static top-16 right-0 bg-sky-800 w-full md:w-auto text-center md:text-left`}
+                        } md:flex md:items-center md:space-x-6 absolute z-10 md:static top-16 right-0 bg-sky-800 w-full md:w-auto text-center md:text-left`}
                 >
                     {!isAuthenticated ? (
                         <>
