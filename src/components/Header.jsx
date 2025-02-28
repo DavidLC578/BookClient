@@ -76,7 +76,7 @@ function Header() {
                                 Explore
                             </Link>
                             <Link className="block py-2 hover:bg-sky-700 md:hover:bg-transparent md:hover:text-gray-300" to="/favorites">
-                                Favourites
+                                Favorites
                             </Link>
                             <Link className="block py-2 hover:bg-sky-700 md:hover:bg-transparent md:hover:text-gray-300" to="/profile">
                                 Profile

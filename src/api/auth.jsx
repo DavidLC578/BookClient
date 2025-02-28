@@ -2,8 +2,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 
 
-const api = 'http://books.test:8080/api'
-
+const api = import.meta.env.VITE_API_URL;
 
 export const registerRequest = async (user) => {
     const res = axios.post(`${api}/register`, user)
