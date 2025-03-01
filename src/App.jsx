@@ -8,6 +8,7 @@ import { AuthProvider } from './context/AuthContext'
 import { ProtectedRoute } from './ProtectedRoute'
 import Publish from './pages/Publish'
 import Explore from './pages/Explore'
+import BookPage from './pages/BookPage'
 
 function App() {
 
@@ -17,10 +18,11 @@ function App() {
         <Route index element={<Welcome />} />
         <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login />} />
+        <Route path='/explore' element={<Explore />} />
+        <Route path='/explore/:id' element={<BookPage />} />
         <Route element={<ProtectedRoute />}>
           <Route path='/home' element={<Home />} />
           <Route path='/publish' element={<Publish />} />
-          <Route path='/explore' element={<Explore />} />
         </Route>
       </Routes>
     </AuthProvider>

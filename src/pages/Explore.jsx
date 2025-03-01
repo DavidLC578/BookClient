@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getBooks } from "../api/booksApi";
 import Header from "../components/Header";
+import { Link } from "react-router-dom";
 
 function Explore() {
     const [books, setBooks] = useState([]);
@@ -45,11 +46,11 @@ function Explore() {
                             <div className="p-4">
                                 <h2 className="text-xl font-semibold text-gray-300 line-clamp-2">{book.title}</h2>
                                 {book.user && (
-                                    <p className="text-gray-400 text-sm">Por {book.user.name}</p>
+                                    <p className="text-gray-400 text-sm mb-4">Por {book.user.name}</p>
                                 )}
-                                <button className="mt-4 cursor-pointer bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-all">
+                                <Link to={`/explore/${book.id}`} className="mt-4 cursor-pointer bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-all">
                                     Ver más
-                                </button>
+                                </Link>
                             </div>
                         </div>
                     ))}

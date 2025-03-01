@@ -15,11 +15,9 @@ export const publish = async (value) => {
 }
 
 export const getBooks = async () => {
-    const token = Cookies.get("token");
-    const config = {
-        headers: {
-            Authorization: `Bearer ${token}`,
-        },
-    };
-    return await axios.get(`${api}/books`, config)
+    return await axios.get(`${api}/books`)
+}
+
+export const getBook = async (id) => {
+    return await axios.get(`${api}/books/${id}`)
 }
