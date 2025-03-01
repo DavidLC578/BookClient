@@ -21,3 +21,9 @@ export const getBooks = async () => {
 export const getBook = async (id) => {
     return await axios.get(`${api}/books/${id}`)
 }
+
+export const downloadBook = async (id) => {
+    return await axios.get(`${api}/books/${id}/download`, {
+        responseType: 'blob'
+    })
+}
