@@ -38,3 +38,14 @@ export const deleteBook = async (id) => {
     };
     return await axios.delete(`${api}/books/${id}`, config)
 }
+
+export const editBook = async (id, value) => {
+    const token = Cookies.get("token");
+    const config = {
+        headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'multipart/form-data',
+        },
+    };
+    return await axios.post(`${api}/books/${id}`, value, config)
+}

@@ -9,6 +9,7 @@ import { ProtectedRoute } from './ProtectedRoute'
 import Publish from './pages/Publish'
 import Explore from './pages/Explore'
 import BookPage from './pages/BookPage'
+import EditPage from './pages/EditPage'
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
         <Route element={<ProtectedRoute />}>
           <Route path='/home' element={<Home />} />
           <Route path='/publish' element={<Publish />} />
+          <Route path='/edit/:id' element={<EditPage />} />
         </Route>
       </Routes>
     </AuthProvider>

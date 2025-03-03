@@ -73,14 +73,19 @@ function BookPage() {
                             <div className="flex justify-between items-center mb-6">
                                 <h1 className="text-4xl font-bold text-gray-200">{book.title}</h1>
                                 <div className='flex gap-x-4'>
-                                    <button onClick={() => handleDownload(id)} className="bg-indigo-600 text-white cursor-pointer px-4 py-2 rounded-lg shadow-md hover:bg-indigo-700 transition duration-300">
+                                    <button onClick={() => handleDownload(id)} className="bg-indigo-600 text-white cursor-pointer px-4 py-2 rounded-lg font-semibold shadow-md hover:bg-indigo-700 transition duration-300">
                                         Download
                                     </button>
                                     {isAuthenticated && book.user_id === user.id &&
                                         (
-                                            <button onClick={() => handleDelete(id)} className="bg-red-600 text-white cursor-pointer px-4 py-2 rounded-lg shadow-md hover:bg-red-700 transition duration-300">
-                                                Delete
-                                            </button>
+                                            <>
+                                                <button onClick={() => handleDelete(id)} className="bg-red-600 text-white cursor-pointer px-4 py-2 rounded-lg font-semibold shadow-md hover:bg-red-700 transition duration-300">
+                                                    Delete
+                                                </button>
+                                                <Link to={`/edit/${id}`} className="bg-yellow-500 text-black cursor-pointer px-7 py-2 font-semibold rounded-lg shadow-md hover:bg-yellow-700 transition duration-300">
+                                                    Edit
+                                                </Link>
+                                            </>
                                         )
                                     }
                                 </div>

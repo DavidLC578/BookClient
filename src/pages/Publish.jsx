@@ -27,10 +27,9 @@ function Publish() {
             if (res.status === 201) {
                 setMessage(res.data.message);
                 setTimeout(() => {
-                    navigate('/home');
-                }, 3000);
+                    navigate('/explore');
+                }, 1000);
             }
-            console.log(res)
         } catch (error) {
             console.error(error.response.data.message)
         }
@@ -38,7 +37,7 @@ function Publish() {
     return (
         <>
             <Header />
-            <div className="flex items-center justify-center md:mt-14 ">
+            <div className="flex items-center justify-center md:mt-7 ">
                 <div className="bg-neutral-900 p-8 rounded-lg shadow-lg w-96">
                     <h1 className="text-white text-2xl font-bold text-center mb-6">Publish a eBook</h1>
                     <form className="flex flex-col space-y-5" encType="multipart/form-data" onSubmit={handleSubmit(onSubmit)}>
