@@ -13,7 +13,6 @@ function Explore() {
             try {
                 const response = await getBooks();
                 setBooks(response.data.data || []);
-                console.log(response);
             } catch (err) {
                 setError("Error al cargar los libros");
             } finally {

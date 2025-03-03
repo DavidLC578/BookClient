@@ -27,3 +27,14 @@ export const downloadBook = async (id) => {
         responseType: 'blob'
     })
 }
+
+export const deleteBook = async (id) => {
+    const token = Cookies.get("token");
+    const config = {
+        headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'multipart/form-data',
+        },
+    };
+    return await axios.delete(`${api}/books/${id}`, config)
+}

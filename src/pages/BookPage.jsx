@@ -1,12 +1,16 @@
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import Header from '../components/Header';
 import { useEffect, useState } from 'react';
-import { downloadBook, getBook } from '../api/booksApi';
+import { deleteBook, downloadBook, getBook } from '../api/booksApi';
+import { useAuth } from '../context/AuthContext';
 
 function BookPage() {
     const { id } = useParams();
     const [loading, setLoading] = useState(true);
     const [book, setBook] = useState();
+    const { user, isAuthenticated } = useAuth();
+    const [error, setError] = useState()
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchBook = async (id) => {
@@ -45,6 +49,18 @@ function BookPage() {
         }
     }
 
+    const handleDelete = async (id) => {
+        try {
+            const response = await deleteBook(id);
+            if (response.status === 200) {
+                navigate('/explore');
+            }
+        } catch (error) {
+            console.error(error)
+            setError(error.response.data.message)
+        }
+    }
+
     return (
         <>
             <Header />
@@ -56,10 +72,20 @@ function BookPage() {
                             {/* Title and button */}
                             <div className="flex justify-between items-center mb-6">
                                 <h1 className="text-4xl font-bold text-gray-200">{book.title}</h1>
-                                <button onClick={() => handleDownload(id)} className="bg-indigo-600 text-white cursor-pointer px-4 py-2 rounded-lg shadow-md hover:bg-indigo-700 transition duration-300">
-                                    Download
-                                </button>
+                                <div className='flex gap-x-4'>
+                                    <button onClick={() => handleDownload(id)} className="bg-indigo-600 text-white cursor-pointer px-4 py-2 rounded-lg shadow-md hover:bg-indigo-700 transition duration-300">
+                                        Download
+                                    </button>
+                                    {isAuthenticated && book.user_id === user.id &&
+                                        (
+                                            <button onClick={() => handleDelete(id)} className="bg-red-600 text-white cursor-pointer px-4 py-2 rounded-lg shadow-md hover:bg-red-700 transition duration-300">
+                                                Delete
+                                            </button>
+                                        )
+                                    }
+                                </div>
                             </div>
+                            {error && <p className='mb-4 text-red-500 text-end text-lg font-semibold'>{error}</p>}
                             {/* Synopsis */}
                             <div className="bg-neutral-900 px-8 py-6 rounded-lg shadow-2xl">
                                 <h2 className="text-2xl font-semibold text-gray-200 mb-4">Synopsis</h2>
